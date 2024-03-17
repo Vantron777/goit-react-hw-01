@@ -1,25 +1,28 @@
-// import React from "react";
-import styles from "./Profile.module.css"; // Підключення стилів CSS-модуля
-
+import styles from "./Profile.module.css";
 const Profile = ({ name, tag, location, image, stats }) => {
   return (
-    <div className={styles.profile}>
-      <div>
-        <img src={image} alt="User avatar" />
-        <p>{name}</p>
-        <p>@{tag}</p>
-        <p>{location}</p>
+    <div className={styles.card}>
+      <div className={styles.profileBox}>
+        <img className={styles.profileImg} src={image} alt={name} />
+        <p className={styles.profileName}>{name}</p>
+        <p className={styles.profileTag}>@{tag}</p>
+        <p className={styles.profileLoc}>{location}</p>
       </div>
-      <ul>
-        {Object.entries(stats).map(([key, value]) => (
-          <li key={key}>
-            <span>{key}</span>
-            <span>{value}</span>
-          </li>
-        ))}
+      <ul className={styles.profileList}>
+        <li className={styles.profileItem}>
+          <span className={styles.itemText}>Followers</span>
+          <span className={styles.itemDesc}>{stats.followers}</span>
+        </li>
+        <li className={styles.profileItem}>
+          <span className={styles.itemText}>Views</span>
+          <span className={styles.itemDesc}>{stats.views}</span>
+        </li>
+        <li className={styles.profileItem}>
+          <span className={styles.itemText}>Likes</span>
+          <span className={styles.itemDesc}>{stats.likes}</span>
+        </li>
       </ul>
     </div>
   );
 };
-
 export default Profile;
